@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+<div id = "downDiv" onmousemove = "draw()" onmousedown = "myFunction()" onmouseup = "myFunction()">
+<body>
+
+<canvas id = "myCanvas"  width = "1200" height ="600"
+style = "border:10px solid #c3c3c3;">
+Your browser does not support the canvas element.
+
+</canvas>
+
+<script>
+	
+   var y = false;
+   
+	
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    
+   
+	function myFunction(){
+		
+        y = !y;
+        
+	}
+    
+    function draw(){
+    	if(y){
+        	ctx.fillStyle = "#FF0000";
+    		ctx.fillRect(event.clientX-20, event.clientY-25, 10,10);
+        }
+    }
+
+
+</script>
+
+</body>
+</div>
+
+</html>
