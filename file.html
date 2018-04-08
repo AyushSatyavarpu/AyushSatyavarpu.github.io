@@ -4,7 +4,7 @@
 
 
 </head>
-<div id = "downDiv" onmousemove = "draw()" onmousedown = "myFunction()" onmouseup = "myFunction()">
+<div id = "downDiv" onmousemove = "draw(event)" onmousedown = "myFunction()" onmouseup = "myFunction()">
 <body>
 <h1>
 This program allows you to use computational linguistics to convert handwritten numbers to computer understood values. <br> Draw your number in the box and press the button to convert.
@@ -19,7 +19,21 @@ Your browser does not support the canvas element.
 	
    var y = false;
    
-	
+   
+    function getPosition(mouseEvent, sigCanvas) {
+         var x, y;
+         if (mouseEvent.pageX != undefined && mouseEvent.pageY != undefined) {
+            x = mouseEvent.pageX;
+            y = mouseEvent.pageY;
+         } else {
+            x = mouseEvent.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+            y = mouseEvent.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+         }
+ 
+         return { X: x - sigCanvas.offsetLeft, Y: y - sigCanvas.offsetTop };
+      }
+ 
+      
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
     
@@ -30,14 +44,14 @@ Your browser does not support the canvas element.
         
 	}
     
-    function draw(){
+    function draw(e){
+    	var asd = getPosition(e, canvas);
     	if(y){
         	ctx.fillStyle = "#FF0000";
-    		ctx.fillRect(event.clientX-25, event.clientY-170, 10,10);
+    		//ctx.fillRect(event.clientX-25, event.clientY-170, 10,10);
+            ctx.fillRect(asd.X-10, asd.Y-10, 10,10);
         }
     }
-
-
 </script>
 
 </body>
