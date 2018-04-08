@@ -15,7 +15,7 @@ Your browser does not support the canvas element.
 
 </canvas>
 </br>
-<button type="button" onclick="alert('Hello world!')" style="
+<button type="button" onclick="convertToImage()" style="
     height: 100px;
     width: 62%;
     font-size: 30px;
@@ -58,6 +58,13 @@ Your browser does not support the canvas element.
             ctx.fillRect(asd.X, asd.Y, 10,10);
         }
     }
+    
+    function convertToImage(){
+		document.write(canvas.toDataURL("image/png"));
+        
+	}
+    
+    
 </script>
 
 </body>
